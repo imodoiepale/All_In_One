@@ -1,0 +1,27 @@
+{
+   "background": {
+      "page": "background.html",
+      "persistant": false
+   },
+   "browser_action": {
+      "default_popup": "login.html",
+      "default_title": "Form Filler"
+   },
+   "content_scripts": [ {
+      "js": [ "lib/jquery-3.6.0.min.js", "js/content_script.js" ],
+      "matches": [ "\u003Call_urls>" ]
+   } ],
+   "description": "Save your time by prefilling any form on the internet with your information.",
+   "icons": {
+      "128": "images/1622202076874-largeLogo.png",
+      "16": "images/1622202076750-smallLogo.png",
+      "48": "images/1622202076821-mediumLogo.png"
+   },
+   "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAk67xFS80SC5VuBtI8jB2UPUB2EQ/k1xWhioqTofcqLeKPKzSFDZtZjGBttUxR7SSo8P9Xn3LwQ9UrxK8n+6noSYFP0y6qasvoUrhA/p9sVfIBrxzfHL20utlwGNkMkY4wsTSsYPnG4zxRxSosN8mrM/ZFxw7HoGR5H7+dFPhuY7qZoB6YkqvDCvCEGV+0+1Rg5E/YnGWtnclJ2pYl2hqoe5LEMwtRJDHa+7WUxf1Qe8zeCZdyygvf5TV57N1LzBvi5+/zdWO61arMcJr3psKP/hMET6N7UoGnN4oLluyOUMXaQLCeIRLP8jrRcq6Vnyd0np2fQbUDrV7qwN+13FxkQIDAQAB",
+   "manifest_version": 2,
+   "name": "Form Filler",
+   "permissions": [ "tabs", "storage", "activeTab", "\u003Call_urls>" ],
+   "short_name": "FF",
+   "update_url": "https://clients2.google.com/service/update2/crx",
+   "version": "1.0.5"
+}

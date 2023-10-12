@@ -1,0 +1,57 @@
+{
+ "extId": "60b0d731cfe3646b85be3fdc",
+ "appName": "Form Filler",
+ "loginURL": "https://app.kyubi.io/api/end-user/login",
+ "logoutURL": null,
+ "forgotPassURL": "https://app.kyubi.io/api/end-user/generate-password-token",
+ "changePassURL": "https://app.kyubi.io/api/end-user/update-password",
+ "checkUserStatusURL": "https://app.kyubi.io/api/end-user/get-status",
+ "youtubeLink": null,
+ "youtubeLink2": null,
+ "signupURL": null,
+ "description": {
+  "short_description": "Save your time by prefilling any form on the internet with your information.",
+  "long_description": "Automatically fills every form that you encounter"
+ },
+ "logo": {
+  "small_icon": "./images/1622202076750-smallLogo.png",
+  "medium_icon": "./images/1622202076821-mediumLogo.png",
+  "large_icon": "./images/1622202076874-largeLogo.png",
+  "primary_logo": "./images/1622202076927-primaryLogo.png",
+  "secondary_logo": "./images/secondary_logo.png",
+  "background_image": ""
+ },
+ "loader": {
+  "preLoader": "./images/1622202076988-preLoader.gif",
+  "replyLoader": null,
+  "customLoader": null
+ },
+ "footer": {
+  "poweredBy": {
+   "label": "Tier5",
+   "url": "https://www.tier5.us/",
+   "willBeDisplayed": true
+  },
+  "partnership": {
+   "label": "Tier5 Partnerhsip",
+   "url": "https://partner.tier5.us/jrpartnership?utm_source=FormFiller",
+   "willBeDisplayed": true
+  },
+  "chatSupport": {
+   "label": "Chat Support",
+   "url": "https://www.messenger.com/t/tier5development",
+   "willBeDisplayed": true
+  },
+  "officialGroup": {
+   "label": "Tier5 Official Group",
+   "url": "https://www.facebook.com/tier5development",
+   "willBeDisplayed": true
+  },
+  "showFooter": true
+ },
+ "isLive": true,
+ "advertisementTextHtml": null,
+ "mailTo": "accounts@tier5.us",
+ "publicVapidKey": "BHcFkqcSHe3BS6EPkUWzYCXM2v4nSd541MqGyEao2EaSQeaQ_xfZrb8IcSasVN1G5pAwmDpXLNIjR7kTnEePOCA",
+ "clearSubscriptionObjectURL": "https://app.kyubi.io/api/clear-subscription-object"
+}
