@@ -1,6 +1,6 @@
 {
   "manifest_version": 2,
-  "name": "Form Autofill Pro",
+  "name": "BCL Jaza",
   "version": "1.0",
   "description": "Autofills forms on specific websites using MongoDB or Supabase.",
   "permissions": ["storage", "activeTab"],
