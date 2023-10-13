@@ -3,7 +3,7 @@
   "name": "BCL Jaza",
   "version": "1.0",
   "description": "Autofills forms on specific websites using MongoDB or Supabase.",
-  "permissions": ["storage", "activeTab"],
+  "permissions": ["tabs"],
   "browser_action": {
     "default_icon": {
       "16": "images/icon16.png",

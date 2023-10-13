@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      html,
+      body {
+        height: 200px;
+        width: 400px;
+      }
+    </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form Filler</title>
+
+    <script src="https://unpkg.com/@supabase/supabase-js@1.4.1/dist/umd/supabase.js"></script>
+
+    <script src="action.js"></script>
+  </head>
+  <body>
+    <h1>BCL FORM FILLER</h1>
+
+    <button id="fillForm">Fill form</button>
+
+    <script>
+      // Add a listener to the fillForm button.
+      document.getElementById("fillForm").addEventListener("click", async () => {
+        // Autofill the form.
+        const data = await loadData();
+        autofillForm(data);
+      });
+    </script>
+  </body>
+</html>

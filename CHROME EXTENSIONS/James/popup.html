@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>BCL Jaza</title>
-    <link rel="stylesheet" href="popup.css" />
+    <link rel="stylesheet" href="./src/styles/popup.css" />
 
     <!-- Material Icons Link -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
@@ -17,27 +17,15 @@
       integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
       crossorigin="anonymous"
     />
-    <!-- supabase-->
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
 
+    <!-- Supabase -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+
+    
   </head>
   <body>
     <div class="popup-container">
       <h1>BCL Jaza</h1>
-
-      <!-- Website Selection Section -->
-      <section id="website-selection">
-        <h2>Website Selection</h2>
-        <select id="select-website">
-          <option value="KRA">KRA</option>
-          <option value="eCitizen">eCitizen</option>
-          <option value="NSSF">NSSF</option>
-          <option value="NHIF">NHIF</option>
-          <option value="ENFS">ENFS</option>
-        </select>
-      </section>
 
       <!-- Client Search Section -->
       <section id="client-search">
@@ -45,10 +33,13 @@
         <input type="text" id="search-input" placeholder="Enter client name or ID" /> <button id="search-btn">Search</button>
       </section>
 
+      <!-- Client Information Container -->
+      <section id="client-info-container"></section>
+
       <!-- Activation Section -->
       <section id="Preview">
         <h2>Preview</h2>
-        <button id="Preview-btn">Preview</button>
+        <button id="Preview-btn" onclick="">Preview</button>
       </section>
     </div>
 
