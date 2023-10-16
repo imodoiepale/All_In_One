@@ -14,7 +14,7 @@ function App() {
         if (error) {
           console.error("Oops! Something went wrong:", error.message);
         } else {
-          console.log("Fetched data:", data);
+          
           setData(data);
         }
       } catch (error) {
