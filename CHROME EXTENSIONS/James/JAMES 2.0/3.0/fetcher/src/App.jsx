@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { supabase } from "./supabaseClient";
 import "./App.css";
+import { Button } from "@material-tailwind/react";
 
 function App() {
   const [data, setData] = useState([]);
@@ -14,7 +15,7 @@ function App() {
         if (error) {
           console.error("Oops! Something went wrong:", error.message);
         } else {
-          
+
           setData(data);
         }
       } catch (error) {
@@ -51,6 +52,7 @@ function App() {
       </form>
 
       <div>
+        <Button>Button</Button>
         <h1>Data from Supabase</h1>
         {filteredData.map(item => (
           <div key={item.id}>
