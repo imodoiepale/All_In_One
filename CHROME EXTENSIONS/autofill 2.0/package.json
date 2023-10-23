@@ -1,0 +1,17 @@
+{
+  "name": "autofill-2.0",
+  "version": "1.0.0",
+  "description": "",
+  "main": "special-pass-visitor.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "puppeteer": "^21.4.0",
+    "puppeteer-extra": "^3.3.6"
+  }
+}

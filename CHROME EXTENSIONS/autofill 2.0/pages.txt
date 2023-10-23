@@ -1,0 +1,15 @@
+Permanent Residency
+    (Category A) Application for Permanent Residency by Ex-Citizens of Kenya - https://fns.immigration.go.ke/dash/pr/newapplicationStart.php?cat=1
+    (Category B) Application for Permanent Residency by holders of Work permits - https://fns.immigration.go.ke/dash/pr/newapplicationStart.php?cat=2
+    (Category C) Application for Permanent Residency by Children of Kenya Citizens- https://fns.immigration.go.ke/dash/pr/newapplicationStart.php?cat=3
+    (Category D) Application for Permanent Residency by Spouses of Kenya Citizens - https://fns.immigration.go.ke/dash/pr/newapplicationStart.php?cat=4
+
+ Visitor's pass extension - https://fns.immigration.go.ke/dash/fns/visitorspassextension_start.php
+
+Citizen of Kenya by descendants of stateless persons and migrants - https://fns.immigration.go.ke/dash/citizenship/newform15applicationStart.php
+
+Application of Permit (Class G) - https://fns.immigration.go.ke/dash/permit/form25start.php?class=20
+
+Application of Permit (Class D) - https://fns.immigration.go.ke/dash/permit/form25start.php?class=18
+
+Application for a Student Pass - https://fns.immigration.go.ke/dash/permit/newstudentpassStart.php?cat=1
