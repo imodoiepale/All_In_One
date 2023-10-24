@@ -2,21 +2,20 @@ import puppeteer from "puppeteer";
 import fs from "fs/promises";
 import { ImageAnnotatorClient } from "@google-cloud/vision";
 
-const keyFilePath = './KRA/keys.json';  // Update with the correct path to your key file
+const keyFilePath = "./KRA/keys.json"; // Update with the correct path to your key file
 
 const keyFileContent = await fs.readFile(keyFilePath);
 
 const client = new ImageAnnotatorClient({
-  keyFilename: keyFilePath,  // Provide the path to the key file, not its content
+  keyFilename: keyFilePath // Provide the path to the key file, not its content
 });
 
-
-const id = "P051619980A";
-const password = "bclitax@2023";
+const id = "P052067762K";
+const password = "bclitax2023";
 const imagePath = "./KRA/ocr.png";
 
 const checkPassword = async () => {
-  const browser = await puppeteer.launch({ headless: "new" });
+  const browser = await puppeteer.launch({ headless: 'new' });
   const page = await browser.newPage();
 
   // Navigate to a website with a password input field
@@ -27,7 +26,6 @@ const checkPassword = async () => {
   await page.type("#logid", id, { delay: 100 });
   await page.click(".btn");
 
-  await page.type("#userName", id);
   await page.type("#xxZTT9p2wQ", password);
 
   const image = await page.waitForSelector("#captcha_img");
@@ -39,7 +37,6 @@ const checkPassword = async () => {
   const imageContent = await fs.readFile(imagePath);
   const imageBase64 = imageContent.toString("base64");
 
-  
   const [documentAnnotateResult] = await client.annotateImage({
     image: {
       content: imageBase64
@@ -51,10 +48,38 @@ const checkPassword = async () => {
     ]
   });
 
-  // Get the annotated result
-  console.log(documentAnnotateResult.fullTextAnnotation);
+  const text = await documentAnnotateResult.fullTextAnnotation.text;
 
+  // Extract the numbers from the equation
+  const numbers = await text.match(/\d+/g);
+  
+
+  // Calculate the result of the equation
+  let result;
+  if (text.includes("+")) {
+    result = Number(numbers[0]) + Number(numbers[1]);
+  } else if (text.includes("-")) {
+    result = Number(numbers[0]) - Number(numbers[1]);
+  } else {
+    // Unsupported operator
+    throw new Error("Unsupported operator.");
+  }
+
+  await page.type("#captcahText", result.toString());
+  
   await page.click("#loginButton");
+  
+
+  await page.waitForNavigation();
+
+
+  if (await page.waitForSelector(".hm_top_315")) {
+    await console.log('Valid')
+  } else if( await page.waitForSelector('#layer1 > div > table > tbody > tr:nth-child(1) > td:nth-child(1)')) {
+    await console.log('Invalid')
+  } else if (await page.waitForSelector('#normalDiv > table:nth-child(1) > tbody > tr > td > font > b')) {
+    await console.log('Wrong Arithmetic')
+  }
 
   await browser.close();
 };
