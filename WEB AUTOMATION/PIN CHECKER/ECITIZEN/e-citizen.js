@@ -1,15 +1,7 @@
 import puppeteer from "puppeteer";
-import fs from "fs/promises";
-import { ImageAnnotatorClient } from "@google-cloud/vision";
 import ExcelJS from "exceljs";
 
-const keyFilePath = "./KRA/keys.json";
-const excelFilePath = "./KRA/passwords_clients.xlsx";
-const imagePath = "./KRA/ocr.png";
-
-const client = new ImageAnnotatorClient({
-  keyFilename: keyFilePath
-});
+const excelFilePath = "./ECITIZEN/E CITIZEN ID PASSWORD.xlsx";
 
 const readExcelData = async (excelFilePath, sheetName) => {
   try {
@@ -21,8 +13,8 @@ const readExcelData = async (excelFilePath, sheetName) => {
     const data = [];
     for (let i = 2; i <= worksheet.rowCount; i++) {
       const row = worksheet.getRow(i);
-      const id = row.getCell(1).value;
-      const password = row.getCell(2).value;
+      const id = row.getCell(3).value;
+      const password = row.getCell(4).value;
       data.push({ id, password, row });
     }
 
@@ -37,58 +29,20 @@ const checkPassword = async (id, password, row) => {
   const page = await browser.newPage();
 
   try {
-    await page.goto("https://itax.kra.go.ke/KRA-Portal/");
+    await page.goto("https://accounts.ecitizen.go.ke/en/login");
     await page.waitForNavigation();
 
-    await page.type("#logid", id, { delay: 100 });
-    await page.click(".btn");
-    await page.type("#xxZTT9p2wQ", password);
+    await page.type("#login_username", id);
 
-    const image = await page.waitForSelector("#captcha_img");
+    await page.type("#login_pwd", password);
+    await page.click("#login > div > div:nth-child(5) > button");
 
-    await image.screenshot({
-      path: imagePath
-    });
-
-    const imageContent = await fs.readFile(imagePath);
-    const imageBase64 = imageContent.toString("base64");
-
-    const [documentAnnotateResult] = await client.annotateImage({
-      image: {
-        content: imageBase64
-      },
-      features: [
-        {
-          type: "DOCUMENT_TEXT_DETECTION"
-        }
-      ]
-    });
-
-    const text = await documentAnnotateResult.fullTextAnnotation.text;
-
-    const numbers = text.match(/\d+/g);
-
-    if (!numbers || numbers.length < 2) {
-      throw new Error("Unable to extract valid numbers from the text.");
-    }
-
-    let result;
-    if (text.includes("+")) {
-      result = Number(numbers[0]) + Number(numbers[1]);
-    } else if (text.includes("-")) {
-      result = Number(numbers[0]) - Number(numbers[1]);
-    } else {
-      throw new Error("Unsupported operator.");
-    }
-
-    await page.type("#captcahText", result.toString());
-    await page.click("#loginButton");
     await page.waitForNavigation();
 
     let status;
 
     try {
-      await page.waitForSelector(".hm_top_315", { timeout: 5000 });
+      await page.waitForSelector("text=ID Number");
       status = "Valid";
       console.log(`Client: ${id}\tPassword: ${password}\tStatus: ${status}`);
     } catch (error) {
@@ -100,9 +54,9 @@ const checkPassword = async (id, password, row) => {
       }
     }
 
-    row.getCell(3).value = status; // Assuming the Status column is in the 3rd column (index 3)
+    row.getCell(5).value = status; // Assuming the Status column is in the 3rd column (index 3)
 
-    const cell = row.getCell(3);
+    const cell = row.getCell();
     if (status === "Valid") {
       cell.fill = {
         type: "pattern",
@@ -115,7 +69,7 @@ const checkPassword = async (id, password, row) => {
   } catch (error) {
     console.error(`Error processing row for ClientID ${id}: ${error.message}`);
     // Update Excel file with an error status
-    row.getCell(3).value = "Error"; // Assuming the Status column is in the 3rd column (index 3)
+    row.getCell(5).value = "Error"; // Assuming the Status column is in the 3rd column (index 3)
   } finally {
     await browser.close();
   }
