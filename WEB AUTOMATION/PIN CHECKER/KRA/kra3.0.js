@@ -1,4 +1,4 @@
-import puppeteer from "puppeteer";
+import { chromium } from "playwright";
 import fs from "fs/promises";
 import { ImageAnnotatorClient } from "@google-cloud/vision";
 import ExcelJS from "exceljs";
@@ -33,14 +33,15 @@ const readExcelData = async (excelFilePath, sheetName) => {
 };
 
 const checkPassword = async (id, password, row) => {
-  const browser = await puppeteer.launch({ headless: false });
-  const page = await browser.newPage();
+  const browser = await chromium.launch({ headless: false });
+  const context = await browser.newContext();
+  const page = await context.newPage();
 
   try {
     await page.goto("https://itax.kra.go.ke/KRA-Portal/");
     await page.waitForNavigation();
 
-    await page.type("#logid", id, { delay: 100 });
+    await page.type("#logid", id);
     await page.click(".btn");
     await page.type("#xxZTT9p2wQ", password);
 
@@ -83,7 +84,6 @@ const checkPassword = async (id, password, row) => {
 
     await page.type("#captcahText", result.toString());
     await page.click("#loginButton");
-    await page.waitForNavigation();
 
     let status;
 
