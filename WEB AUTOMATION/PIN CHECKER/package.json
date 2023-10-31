@@ -5,7 +5,11 @@
     "exceljs": "^4.4.0",
     "immutable": "^5.0.0-beta.4",
     "jszip": "^3.10.1",
+    "playwright": "^1.39.0",
     "puppeteer": "^21.4.0",
     "read-excel-file": "^5.7.1"
+  },
+  "devDependencies": {
+    "electron": "^27.0.2"
   }
 }
